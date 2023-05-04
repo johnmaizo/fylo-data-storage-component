@@ -1,0 +1,264 @@
+$clr_Primary_Gradient1: hsl(6, 100%, 80%);
+$clr_Primary_Gradient2: hsl(335, 100%, 65%);
+$clr_Neutral_Pale_Blue: hsl(243, 100%, 93%);
+$clr_Neutral_Grayish_Blue: hsl(229, 7%, 55%);
+$clr_Neutral_Dark_Blue: hsl(228, 56%, 26%);
+$clr_Neutral_Very_Dark_Blue: hsl(229, 57%, 11%);
+$fs_regular: 14px;
+$fw_400: 400;
+$fw_700: 700;
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: $clr_Neutral_Very_Dark_Blue;
+    color: $clr_Neutral_Pale_Blue;
+}
+
+main {    
+    p {
+        font-size: $fs_regular;
+    }
+
+    .box1 {
+        
+        background-color: $clr_Neutral_Dark_Blue;
+        padding: 2em;
+        border-radius: 10px;
+        border-top-right-radius: 6em;
+
+        .logo {
+            display: block;
+            width: 135px;
+        }
+
+        .buttons {
+            padding-block-start: 2em;
+            display: flex;
+
+            gap: 1em;
+            button {
+                border: 0;
+                padding: 1em;
+                aspect-ratio: 1/1;
+                background-color: $clr_Neutral_Very_Dark_Blue;
+                border-radius: 10px;
+                cursor: pointer;
+
+                transition: background-color 0.3s ease;
+
+                &:is(:hover, :focus) {
+                    background-color: $clr_Neutral_Pale_Blue;
+                }
+            }
+        }
+    }
+
+    .box2 {
+        .progress {
+            .reminder {
+                padding-block: 1em;
+            }
+            
+            background-color: $clr_Neutral_Dark_Blue;
+            padding-block: 1em;
+            padding-inline: 1em;
+            border-radius: 10px;
+            
+            .background_bar {
+                background-color: #141F4A;
+                padding: 5px;
+                border-radius: 15px;
+            }
+
+            .flex_wrap {
+                display: flex;
+                justify-content: space-between;
+                font-weight: $fw_700;
+            }
+
+            .bar {
+                height: 1.5em;
+                width: 75%;
+                background-image: linear-gradient($clr_Primary_Gradient1, $clr_Primary_Gradient2);
+                border-radius: 10px;
+                position: relative;
+                overflow: hidden;
+
+                &::before {
+                    content: '';
+                    aspect-ratio: 1/1;
+                    width: 1em;
+                    position: absolute;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 1%;
+                }
+            }
+            
+            p:nth-child(3), p:nth-child(4), span {
+                font-weight: $fw_700;
+            }
+        }
+        
+        .GB {
+            background-color: #FFFFFF;
+            padding: 0.5em;
+            text-transform: uppercase;
+            font-weight: $fw_700;
+            max-width: 13.5em;
+            text-align: center;
+            border-radius: 10px;
+            color: $clr_Neutral_Grayish_Blue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            letter-spacing: 2px;
+
+            span {
+                letter-spacing: 0;
+                font-size: 2.5rem;
+                font-weight: $fw_700;
+                color: $clr_Neutral_Very_Dark_Blue;
+                
+            }
+        }
+
+        
+    }
+}
+
+footer {
+    text-align: center;
+    padding-block-start: 5em;
+
+    a {
+        color: $clr_Neutral_Grayish_Blue;
+    }
+
+    a:is(:hover, :focus) {
+        color: blue
+    }
+}
+
+
+// ! Mobile View
+@media (max-width: 49.95em) {
+    .container {
+        max-width: 1440px;
+        width: 80%;
+        margin-inline: auto;
+    }
+
+    body {
+        background: url("../images/bg-mobile.png") no-repeat top / cover;
+    }
+
+    main {
+        padding-block-start: 8em;
+
+        .box2 {
+            padding-block: 1.5em;
+
+            .GB {
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                top: -3em;
+            }
+
+            .progress {
+                padding-block-end: 4em;
+
+                .reminder {
+                    text-align: center;
+                }
+
+                .background_bar, .flex_wrap {
+                    margin-inline: 0.5em;
+                }
+                
+            }
+        }
+    }
+}
+
+
+// ! Desktop View
+@media (min-width: 50em) {
+    body {
+        height: 100vh;
+        display: grid;
+        place-content: center;
+
+
+        main {
+            display: flex;
+
+            align-items: end;
+            gap: 2em;
+            row-gap: 5em;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .box1 {
+                min-width: 20em;
+            }
+
+            .box2 {
+                
+                min-width: 40em;
+                position: relative;
+
+                .GB {
+                    position: absolute;
+                    right: 5%;
+                    top: -4em;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        border-left: 0 solid transparent;
+                        border-right: 35px solid transparent;
+                        border-bottom: 35px solid #fff;
+                        rotate: 180deg;
+                        right: 0;
+
+                        bottom: -1.8em;
+                    }
+                }
+
+                .progress {
+                    padding-inline: 2em;
+
+                    .background_bar {
+
+                        .bar {
+                            width: 80%;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        &::before {
+            content: '';
+            width: 100%;
+            height: 20em;
+            background: url("../images/bg-desktop.png") no-repeat top / cover;
+            position: absolute;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}
